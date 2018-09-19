@@ -25,8 +25,8 @@ public class Relation {
 	
 	public static Relation createBySaveStr(String saveStr){
 		String[] fields = saveStr.split("\\|\\|");
-		Entity entity1 = Entity.createBySaveStr(fields[0]);
-		Entity entity2 = Entity.createBySaveStr(fields[2]);
+		Entity entity1 = Entity.createByAnnotationStr(fields[0].split("@"));
+		Entity entity2 = Entity.createByAnnotationStr(fields[2].split("@"));
 		String type = fields[1].substring(fields[1].indexOf("=")+1);
 		Relation rel = new Relation();
 		rel.setEnt1(entity1);

@@ -196,7 +196,7 @@ public class Entity implements Comparable<Entity> {
 
     //xxx【p1-p2】type
     public String toRelationSave() {
-        return toAnnotation() + getEntityType();
+        return toAnnotation() + "@" + getEntityType();
     }
 
     public static Entity createByRelSaveStr(String relSaveStr) {
@@ -215,6 +215,10 @@ public class Entity implements Comparable<Entity> {
 
     public String toAnnotation() {
         return entity + ENT_START_POS_CHAR + startPos + "-" + endPos + ENT_END_POS_CHAR;
+    }
+
+    public String toAnnotationAndType(){
+        return entity + ENT_START_POS_CHAR + startPos + "-" + endPos + ENT_END_POS_CHAR + "@" + entityType;
     }
 
     @Override

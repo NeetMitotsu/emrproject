@@ -36,7 +36,7 @@ public class NewRelation implements Comparable<NewRelation>{
 	}
 	
 	/**
-	 * E={xxx°æp1-p2°øtype;xxx°æ°øtype}||R=xxx||E={xxx°æp1-p2°øtype;xxx°æ°øtype}||Q=true
+	 * E={xxx„Äêp1-p2„Äëtype;xxx„Äê„Äëtype}||R=xxx||E={xxx„Äêp1-p2„Äëtype;xxx„Äê„Äëtype}||Q=true
 	 * @param saveStr
 	 * @return
 	 */
@@ -81,8 +81,8 @@ public class NewRelation implements Comparable<NewRelation>{
 	}
 	
 	public static void main(String[] args) {
-//		String ss = "E={xxx°æ1-2°øtype;xxx°æ3-4°øtype}||R=www||E={yyy°æ3-4°øtype;yyy°æ3-4°øtype}";
-		String ss = "E={xxx°æ1-2°øtype;xxx°æ3-4°øtype}";
+//		String ss = "E={xxx„Äê1-2„Äëtype;xxx„Äê3-4„Äëtype}||R=www||E={yyy„Äê3-4„Äëtype;yyy„Äê3-4„Äëtype}";
+		String ss = "E={xxx„Äê1-2„Äëtype;xxx„Äê3-4„Äëtype}";
 		NewRelation r = NewRelation.createBySaveStr(ss);
 		System.out.println(r.toSave());
 	}
@@ -106,14 +106,14 @@ public class NewRelation implements Comparable<NewRelation>{
 	public String ents1ToAnnotation(){
 		StringBuffer sb = new StringBuffer();
 		for(Entity ent : getEnts1()){
-			sb.append(ent.getEntity()+"£ª");
+			sb.append(ent.getEntity()+"Ôºõ");
 		}
 		return sb.toString();
 	}
 	public String ents2ToAnnotation(){
 		StringBuffer sb = new StringBuffer();
 		for(Entity ent : getEnts2()){
-			sb.append(ent.getEntity()+"£ª");
+			sb.append(ent.getEntity()+"Ôºõ");
 		}
 		return sb.toString();
 	}
