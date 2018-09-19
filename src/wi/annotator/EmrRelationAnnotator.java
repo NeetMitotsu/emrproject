@@ -58,7 +58,7 @@ public class EmrRelationAnnotator
 	    {
 	    	public void actionPerformed(ActionEvent e)
 	    	{	    		
-	    		JFileChooser j=new JFileChooser(GlobalCache.currentPath);//ÎÄ¼şÑ¡ÔñÆ÷
+	    		JFileChooser j=new JFileChooser(GlobalCache.currentPath);//æ–‡ä»¶é€‰æ‹©å™¨
 	    		j.setFileFilter(new EmrFileFiller(".xml"));
 	    	    if(j.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
 	    		{	    	    	
@@ -168,7 +168,7 @@ public class EmrRelationAnnotator
 	    	public void actionPerformed(ActionEvent e)
 	    	{
 	    		
-	    		JFileChooser j=new JFileChooser(GlobalCache.currentPath);//ÎÄ¼şÑ¡ÔñÆ÷
+	    		JFileChooser j=new JFileChooser(GlobalCache.currentPath);//æ–‡ä»¶é€‰æ‹©å™¨
 	    		j.setFileFilter(new EmrFileFiller(".ent,.qst"));
 	    	    if(j.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 	    	    	 try{
@@ -191,7 +191,7 @@ public class EmrRelationAnnotator
 			public void actionPerformed(ActionEvent e)
 			{
 				
-				JFileChooser j=new JFileChooser(GlobalCache.currentPath);//ÎÄ¼şÑ¡ÔñÆ÷
+				JFileChooser j=new JFileChooser(GlobalCache.currentPath);//æ–‡ä»¶é€‰æ‹©å™¨
 				j.setFileFilter(new EmrFileFiller(".ent"));
 				if(j.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 					try{
@@ -243,15 +243,15 @@ public class EmrRelationAnnotator
 	}
 	
 	private static void addAddNEButtonListener(JButton buttonNE,final JTextPane textPane,final JTable table){
-//	    JButton buttonNE;//Ìí¼ÓÊµÌå°´¼ü£¬Í¨¹ı»¬¶¯Êó±êÑ¡ÖĞÎÄÖĞÒ»²¿·Ö£¬Ö®ºóµã»÷Ìí¼ÓÊµÌå¼´¿É
-//	    buttonNE = new JButton("Ìí¼ÓÊµÌå A");
+//	    JButton buttonNE;//æ·»åŠ å®ä½“æŒ‰é”®ï¼Œé€šè¿‡æ»‘åŠ¨é¼ æ ‡é€‰ä¸­æ–‡ä¸­ä¸€éƒ¨åˆ†ï¼Œä¹‹åç‚¹å‡»æ·»åŠ å®ä½“å³å¯
+//	    buttonNE = new JButton("æ·»åŠ å®ä½“ A");
 	    buttonNE.setMnemonic(KeyEvent.VK_A);
 	    buttonNE.addActionListener(new ActionListener()
 	    {
 	    	public void actionPerformed(ActionEvent e)
 	    	{
-	    		int p0 = textPane.getSelectionStart();//Ñ¡ÖĞÄÚÈİµÄÆğÊ¼Î»ÖÃ
-	    		int p1 = textPane.getSelectionEnd();//Ñ¡ÖĞÄÚÈİµÄÖÕÖ¹Î»ÖÃ
+	    		int p0 = textPane.getSelectionStart();//é€‰ä¸­å†…å®¹çš„èµ·å§‹ä½ç½®
+	    		int p1 = textPane.getSelectionEnd();//é€‰ä¸­å†…å®¹çš„ç»ˆæ­¢ä½ç½®
 
 	    		hidePopupMenu();
 	    	
@@ -283,7 +283,7 @@ public class EmrRelationAnnotator
 	    		}
 	    		else
 	    		{
-	    			JOptionPane.showMessageDialog(null, "ÇëÏÈÑ¡ÖĞÒ»¸öºÏ·¨µÄÊµÌå", "ÌáÊ¾",
+	    			JOptionPane.showMessageDialog(null, "è¯·å…ˆé€‰ä¸­ä¸€ä¸ªåˆæ³•çš„å®ä½“", "æç¤º",
 	    		            JOptionPane.INFORMATION_MESSAGE);
 	    		}
 	    	}
@@ -292,8 +292,8 @@ public class EmrRelationAnnotator
 	
 	
 	private static void addDeleteNEButtonListener(JButton buttonNO,final JTextPane textPane,final JTable table){
-//	    JButton buttonNO;//É¾³ıÒ»¸öÊµÌå
-//	    buttonNO = new JButton("É¾³ıÊµÌå D");
+//	    JButton buttonNO;//åˆ é™¤ä¸€ä¸ªå®ä½“
+//	    buttonNO = new JButton("åˆ é™¤å®ä½“ D");
 	    buttonNO.setMnemonic(KeyEvent.VK_D);
 	    buttonNO.addActionListener(new ActionListener()
 	    {
@@ -301,21 +301,21 @@ public class EmrRelationAnnotator
 	    	{
 	    		hidePopupMenu();
 	    		
-	    		int response = JOptionPane.showConfirmDialog(null, "ÄúÊÇ·ñÏ£ÍûÇå³ıµ±Ç°Ñ¡ÖĞÊµÌå£¿", "ÌáÊ¾", JOptionPane.YES_NO_OPTION);
+	    		int response = JOptionPane.showConfirmDialog(null, "æ‚¨æ˜¯å¦å¸Œæœ›æ¸…é™¤å½“å‰é€‰ä¸­å®ä½“ï¼Ÿ", "æç¤º", JOptionPane.YES_NO_OPTION);
 	    		
 	    		if (response == 0)
 	    		{
 			    	int row = table.getSelectedRow();
 			    	if (row >= 0)
 			    	{
-			    		String annoationStr = (String)table.getValueAt(row, table.getColumnModel().getColumnIndex("ÊµÌå"));
+			    		String annoationStr = (String)table.getValueAt(row, table.getColumnModel().getColumnIndex("å®ä½“"));
 			    		Entity ent = Entity.createByAnnotationStr(annoationStr);
 			    		clearEntityColor(textPane, ent);
 			    		((DefaultTableModel)table.getModel()).removeRow(row);
 			    	}
 			    	else
 			    	{
-			    		JOptionPane.showMessageDialog(null, "ÇëÏÈÑ¡ÖĞÒ»¸öÒÑ¾­±ê×¢µÄÊµÌå", "ÌáÊ¾",
+			    		JOptionPane.showMessageDialog(null, "è¯·å…ˆé€‰ä¸­ä¸€ä¸ªå·²ç»æ ‡æ³¨çš„å®ä½“", "æç¤º",
 			    		           JOptionPane.INFORMATION_MESSAGE);
 			    	}
 	    		}
@@ -323,7 +323,7 @@ public class EmrRelationAnnotator
 	    });
 	}
 	
-	//E=ÄÔ¹£ËÀ P=p0:p1 T=¼²²¡ A=µ±Ç°µÄ
+	//E=è„‘æ¢—æ­» P=p0:p1 T=ç–¾ç—… A=å½“å‰çš„
 	private static void addExportNEButtonToTab1(JButton buttonSave,final JTable table,final JTextField inputFile){
 	    buttonSave.addActionListener(new ActionListener()
 	    {
@@ -355,12 +355,12 @@ public class EmrRelationAnnotator
     					}
     				}else{
     					int rowno = (Integer)rowdata.get(0);
-    					sb.append("µÚ"+rowno+"ĞĞÊµÌåÓ¦Ñ¡ÔñÊµÌåÀàĞÍ\n");
+    					sb.append("ç¬¬"+rowno+"è¡Œå®ä½“åº”é€‰æ‹©å®ä½“ç±»å‹\n");
     				}
     				
     				if(ent.getEntity().matches(".*\\d+.*")){
     					int rowno = (Integer)rowdata.get(0);
-    					warning.append("µÚ"+rowno+"ĞĞÊµÌåÖĞ°üº¬Êı×Ö\n");
+    					warning.append("ç¬¬"+rowno+"è¡Œå®ä½“ä¸­åŒ…å«æ•°å­—\n");
     				}
     				TypeColor asserttype = (TypeColor)rowdata.get(3);
     				if(asserttype != null){
@@ -368,7 +368,7 @@ public class EmrRelationAnnotator
     				}else{
     					if(needAssert){
     						int rowno = (Integer)rowdata.get(0);
-    						sb.append("µÚ"+rowno+"ĞĞĞèÒªÑ¡ÔñĞŞÊÎÀàĞÍ\n");
+    						sb.append("ç¬¬"+rowno+"è¡Œéœ€è¦é€‰æ‹©ä¿®é¥°ç±»å‹\n");
     					}
     				}
     				
@@ -407,8 +407,8 @@ public class EmrRelationAnnotator
 		    				String warningMsg = warning.toString();
 		    				boolean resume = true;
 		    				if(warningMsg.length() > 0){
-		    					warningMsg = warningMsg +"\n ÊÇ·ñ¼ÌĞø£¿";
-		    					int state = JOptionPane.showConfirmDialog(null, warningMsg, "¾¯¸æ", JOptionPane.YES_NO_OPTION);
+		    					warningMsg = warningMsg +"\n æ˜¯å¦ç»§ç»­ï¼Ÿ";
+		    					int state = JOptionPane.showConfirmDialog(null, warningMsg, "è­¦å‘Š", JOptionPane.YES_NO_OPTION);
 		    					if(state != JOptionPane.YES_OPTION){
 		    						resume = false;
 		    					}
@@ -426,13 +426,13 @@ public class EmrRelationAnnotator
 		    						tobedeletedFile.delete();
 		    					}
 		    					
-		    					JOptionPane.showMessageDialog(null, "±£´æ³É¹¦  Â·¾¶£º"+path, "ÌáÊ¾",JOptionPane.INFORMATION_MESSAGE);
+		    					JOptionPane.showMessageDialog(null, "ä¿å­˜æˆåŠŸ  è·¯å¾„ï¼š"+path, "æç¤º",JOptionPane.INFORMATION_MESSAGE);
 		    				}else{
-		    					JOptionPane.showMessageDialog(null, "±ê×¢½á¹ûÎ´±£´æ", "ÌáÊ¾",JOptionPane.INFORMATION_MESSAGE);
+		    					JOptionPane.showMessageDialog(null, "æ ‡æ³¨ç»“æœæœªä¿å­˜", "æç¤º",JOptionPane.INFORMATION_MESSAGE);
 		    				}
 		    				
 		    			}else{
-		    				JOptionPane.showMessageDialog(null,errMsg, "´íÎó",
+		    				JOptionPane.showMessageDialog(null,errMsg, "é”™è¯¯",
 		    						JOptionPane.INFORMATION_MESSAGE);
 		    			}
 		    			
@@ -447,7 +447,7 @@ public class EmrRelationAnnotator
 	    		}
 	    		else
 	    		{
-	    			JOptionPane.showMessageDialog(null, "ÒÑÈ¡Ïû  Î´±£´æ", "ÌáÊ¾",
+	    			JOptionPane.showMessageDialog(null, "å·²å–æ¶ˆ  æœªä¿å­˜", "æç¤º",
 	    		            JOptionPane.INFORMATION_MESSAGE);
 	    		}
 	    	}
@@ -467,7 +467,7 @@ public class EmrRelationAnnotator
 	
 	private static void setEntitySelected(JTextPane textPane,JTable table){
 		int row = table.getSelectedRow();
-		String entityvalue = (String)table.getValueAt(row, table.getColumnModel().getColumnIndex("ÊµÌå"));
+		String entityvalue = (String)table.getValueAt(row, table.getColumnModel().getColumnIndex("å®ä½“"));
 		Entity ent = Entity.createByAnnotationStr(entityvalue);
 		setEntityBackground(textPane,ent);
 		textPane.setCaretPosition(ent.getStartPos());
@@ -513,44 +513,44 @@ public class EmrRelationAnnotator
 	
 	
 	private static JTable createEntityTable(final JTextPane textPane,final boolean isForEntity){
-		Object columnNames[] = {"ĞĞºÅ","ÊµÌå", "ÀàĞÍ","ĞŞÊÎ","²»È·¶¨"};//±í¸ñµÄ4ÁĞÒâÒå
-//		final Object rowData[][] = new Object[maxNum][2];//½¨Á¢±í¸ñÖĞµÄÔªËØÊı×é
-		final JTable table = new JTable(null, columnNames);//½¨Á¢±í¸ñ
+		Object columnNames[] = {"è¡Œå·","å®ä½“", "ç±»å‹","ä¿®é¥°","ä¸ç¡®å®š"};//è¡¨æ ¼çš„4åˆ—æ„ä¹‰
+//		final Object rowData[][] = new Object[maxNum][2];//å»ºç«‹è¡¨æ ¼ä¸­çš„å…ƒç´ æ•°ç»„
+		final JTable table = new JTable(null, columnNames);//å»ºç«‹è¡¨æ ¼
 		DefaultTableModel model = new DefaultTableModel(){
 			public boolean isCellEditable(int row, int column)
             {
 						if(!isForEntity){
 							return false;
 						}
-						if(getColumnName(column).equals("ÀàĞÍ") &&
+						if(getColumnName(column).equals("ç±»å‹") &&
 								(getValueAt(row, column - 1) != null && getValueAt(row, column - 1).toString().length() > 0)){
 							
 							return true;
 						}
-						if(getColumnName(column).equals("ĞŞÊÎ")){
+						if(getColumnName(column).equals("ä¿®é¥°")){
 							TypeColor tc = ((TypeColor)getValueAt(row, column - 1));
 							if(tc != null && (tc.getFlag() == 1)){
 								return true;
 							}
 						}
-						if(getColumnName(column).equals("²»È·¶¨")){
+						if(getColumnName(column).equals("ä¸ç¡®å®š")){
 							return true;
 						}
-                       return false;//±í¸ñ²»ÔÊĞí±»±à¼­
+                       return false;//è¡¨æ ¼ä¸å…è®¸è¢«ç¼–è¾‘
             }
 			public void setValueAt(Object aValue, int row, int column) {
 				super.setValueAt(aValue, row, column);
-				if(column == table.getColumnModel().getColumnIndex("ÀàĞÍ")){
+				if(column == table.getColumnModel().getColumnIndex("ç±»å‹")){
 					TypeColor tc = (TypeColor)aValue;
-					String entityvalue = (String)table.getValueAt(row, table.getColumnModel().getColumnIndex("ÊµÌå"));
+					String entityvalue = (String)table.getValueAt(row, table.getColumnModel().getColumnIndex("å®ä½“"));
 					Entity ent = Entity.createByAnnotationStr(entityvalue);				
 			    	setEntityForeground(textPane,ent,tc);
 			    	
 			    	if(tc.getFlag() == 0){
-			    		table.setValueAt(null, row, table.getColumnModel().getColumnIndex("ĞŞÊÎ"));
+			    		table.setValueAt(null, row, table.getColumnModel().getColumnIndex("ä¿®é¥°"));
 			    	}
 			    	if(tc.getFlag() == 1){
-			    		DefaultCellEditor editor = (DefaultCellEditor)table.getCellEditor(row, table.getColumnModel().getColumnIndex("ĞŞÊÎ"));
+			    		DefaultCellEditor editor = (DefaultCellEditor)table.getCellEditor(row, table.getColumnModel().getColumnIndex("ä¿®é¥°"));
 			    		AssertTypeComboxModel model = (AssertTypeComboxModel)((JComboBox)editor.getComponent()).getModel();
 			    		if(tc.getTypeId().equals("treatment")){
 			    			model.setCondition("treatment");
@@ -573,7 +573,7 @@ public class EmrRelationAnnotator
 		final JTextField inputFile = new JTextField(40);
 		inputFile.setEditable(false);
 		
-		final JComboBox combo = new JComboBox();//½¨Á¢ÊµÌå·ÖÀàÏÂÀ­²Ëµ¥
+		final JComboBox combo = new JComboBox();//å»ºç«‹å®ä½“åˆ†ç±»ä¸‹æ‹‰èœå•
 		for(TypeColor tc : TypeColorMap.getEntityTypeArray()){
 			combo.addItem(tc);
 		}
@@ -582,30 +582,30 @@ public class EmrRelationAnnotator
 	    
 	    
 	    DefaultCellEditor typeeditor = new DefaultCellEditor(combo);
-	    table.getColumn("ÀàĞÍ").setCellEditor(typeeditor);//½«µÚ3ÁĞÉèÎª¸½ÀàÏÂÀ­Ñ¡Ïî
-	    table.getColumn("ÀàĞÍ").setCellRenderer(new TypeCellRender(true));
+	    table.getColumn("ç±»å‹").setCellEditor(typeeditor);//å°†ç¬¬3åˆ—è®¾ä¸ºé™„ç±»ä¸‹æ‹‰é€‰é¡¹
+	    table.getColumn("ç±»å‹").setCellRenderer(new TypeCellRender(true));
 	    
 	    AssertTypeComboxModel atcm = new AssertTypeComboxModel();
-	    JComboBox combo2 = new JComboBox(atcm);//½¨Á¢ĞŞÊÎ·ÖÀàÏÂÀ­²Ëµ¥
+	    JComboBox combo2 = new JComboBox(atcm);//å»ºç«‹ä¿®é¥°åˆ†ç±»ä¸‹æ‹‰èœå•
 	    AssertTypeMouseListener atml = new AssertTypeMouseListener(table,combo2);
 	    combo2.getComponent(0).addMouseListener(atml);
 	    combo2.setEditable(false);
 	    DefaultCellEditor asserteditor = new DefaultCellEditor(combo2);
-	    table.getColumn("ĞŞÊÎ").setCellEditor(asserteditor);//½«µÚ3ÁĞÉèÎª¸½ÀàÏÂÀ­Ñ¡Ïî
-	    table.getColumn("ĞŞÊÎ").setCellRenderer(new AsserttypeRender());
+	    table.getColumn("ä¿®é¥°").setCellEditor(asserteditor);//å°†ç¬¬3åˆ—è®¾ä¸ºé™„ç±»ä¸‹æ‹‰é€‰é¡¹
+	    table.getColumn("ä¿®é¥°").setCellRenderer(new AsserttypeRender());
 	    
-	    table.getColumn("ĞĞºÅ").setPreferredWidth(1);
+	    table.getColumn("è¡Œå·").setPreferredWidth(1);
 	    
-	    table.getColumn("²»È·¶¨").setCellEditor(new DefaultCellEditor(new JCheckBox()));
+	    table.getColumn("ä¸ç¡®å®š").setCellEditor(new DefaultCellEditor(new JCheckBox()));
 	    addTableMouseListener(textPane,table);
-	    table.getColumn("²»È·¶¨").setCellRenderer(new QuestionalRenderer());
+	    table.getColumn("ä¸ç¡®å®š").setCellRenderer(new QuestionalRenderer());
 	    
 	    return  table;
 	}
 //	11
 	private static JTable createEntityTableForRelation(final JTextPane textPane){
-		Object columnNames[] = {"ÊµÌå", "ÀàĞÍ","ĞŞÊÎ"};//±í¸ñµÄ4ÁĞÒâÒå
-		final JTable table = new JTable(null, columnNames);//½¨Á¢±í¸ñ
+		Object columnNames[] = {"å®ä½“", "ç±»å‹","ä¿®é¥°"};//è¡¨æ ¼çš„4åˆ—æ„ä¹‰
+		final JTable table = new JTable(null, columnNames);//å»ºç«‹è¡¨æ ¼
 		DefaultTableModel model = new DefaultTableModel(){
 			public boolean isCellEditable(int row, int column)
 			{
@@ -613,17 +613,17 @@ public class EmrRelationAnnotator
 			}
 			public void setValueAt(Object aValue, int row, int column) {
 				super.setValueAt(aValue, row, column);
-				if(column == table.getColumnModel().getColumnIndex("ÀàĞÍ")){
+				if(column == table.getColumnModel().getColumnIndex("ç±»å‹")){
 					TypeColor tc = (TypeColor)aValue;
-					String entityvalue = (String)table.getValueAt(row, table.getColumnModel().getColumnIndex("ÊµÌå"));
+					String entityvalue = (String)table.getValueAt(row, table.getColumnModel().getColumnIndex("å®ä½“"));
 					Entity ent = Entity.createByAnnotationStr(entityvalue);				
 					setEntityForeground(textPane,ent,tc);
 					
 					if(tc.getFlag() == 0){
-						table.setValueAt(null, row, table.getColumnModel().getColumnIndex("ĞŞÊÎ"));
+						table.setValueAt(null, row, table.getColumnModel().getColumnIndex("ä¿®é¥°"));
 					}
 					if(tc.getFlag() == 1){
-						DefaultCellEditor editor = (DefaultCellEditor)table.getCellEditor(row, table.getColumnModel().getColumnIndex("ĞŞÊÎ"));
+						DefaultCellEditor editor = (DefaultCellEditor)table.getCellEditor(row, table.getColumnModel().getColumnIndex("ä¿®é¥°"));
 						AssertTypeComboxModel model = (AssertTypeComboxModel)((JComboBox)editor.getComponent()).getModel();
 						if(tc.getTypeId().equals("treatment")){
 							model.setCondition("treatment");
@@ -643,9 +643,9 @@ public class EmrRelationAnnotator
 		
 		table.setRowHeight(25);
 		
-		table.getColumn("ÀàĞÍ").setCellRenderer(new TypeCellRender(true));
+		table.getColumn("ç±»å‹").setCellRenderer(new TypeCellRender(true));
 		
-		table.getColumn("ĞŞÊÎ").setCellRenderer(new AsserttypeRender());
+		table.getColumn("ä¿®é¥°").setCellRenderer(new AsserttypeRender());
 		
 		addTableMouseListener(textPane,table);
 		
@@ -660,7 +660,7 @@ public class EmrRelationAnnotator
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {
 			// TODO Auto-generated method stub
-			Boolean bjvalue = (Boolean)table.getValueAt(row, table.getColumnModel().getColumnIndex("²»È·¶¨"));
+			Boolean bjvalue = (Boolean)table.getValueAt(row, table.getColumnModel().getColumnIndex("ä¸ç¡®å®š"));
 			JCheckBox jcb = new JCheckBox();
 			if(bjvalue != null && bjvalue){
 				jcb.setSelected(true);
@@ -678,11 +678,11 @@ public class EmrRelationAnnotator
 	    JTextField inputFile = new JTextField(40);
 		inputFile.setEditable(false);
 
-	    JButton buttonOpen = new JButton("´ò¿ªÎÄ¼ş");
-	    JButton buttonInNE = new JButton("µ¼ÈëÊµÌå");
-	    JButton buttonNE = new JButton("Ìí¼ÓÊµÌå A");
-	    JButton buttonNO = new JButton("É¾³ıÊµÌå D");
-	    JButton buttonSave = new JButton("µ¼³ö½á¹û");
+	    JButton buttonOpen = new JButton("æ‰“å¼€æ–‡ä»¶");
+	    JButton buttonInNE = new JButton("å¯¼å…¥å®ä½“");
+	    JButton buttonNE = new JButton("æ·»åŠ å®ä½“ A");
+	    JButton buttonNO = new JButton("åˆ é™¤å®ä½“ D");
+	    JButton buttonSave = new JButton("å¯¼å‡ºç»“æœ");
 	    JPopupMenu popmenu = new JPopupMenu();
 	    
 	    btnpanel.add(buttonOpen);
@@ -692,8 +692,8 @@ public class EmrRelationAnnotator
 	    btnpanel.add(inputFile);
 	    btnpanel.add(buttonSave);
 	    
-	    GlobalComponent.addNEButton = new JButton("Ìí¼ÓÊµÌå A");
-	    GlobalComponent.delNEButton = new JButton("É¾³ıÊµÌå D");
+	    GlobalComponent.addNEButton = new JButton("æ·»åŠ å®ä½“ A");
+	    GlobalComponent.delNEButton = new JButton("åˆ é™¤å®ä½“ D");
 	    
 	    
 	    addOpenFileButtonListener(buttonOpen,textPane,inputFile,table,null);
@@ -721,13 +721,13 @@ public class EmrRelationAnnotator
 	}
 	
 	
-	private static void addEntityAnnotationTab(JTabbedPane tabbedPane, String text)//Ò³ÃæÒ»£ºÊµÌå±ê×¢
+	private static void addEntityAnnotationTab(JTabbedPane tabbedPane, String text)//é¡µé¢ä¸€ï¼šå®ä½“æ ‡æ³¨
 	{
-		JPanel entityPanel = new JPanel();//ĞÂ½¨Ò»¸ö°æÃæ
-		entityPanel.setLayout(new BorderLayout());//ÓÃBorderLayout¶Ô°æÃæ½øĞĞ²¼¾Ö
+		JPanel entityPanel = new JPanel();//æ–°å»ºä¸€ä¸ªç‰ˆé¢
+		entityPanel.setLayout(new BorderLayout());//ç”¨BorderLayoutå¯¹ç‰ˆé¢è¿›è¡Œå¸ƒå±€
 		
-		final JTextPane entityTextPane = new JTextPane();//ĞÂ½¨Ò»¸öÎÄ±¾±à¼­¿ò£¬ÓÃÀ´ÏÔÊ¾ÎÄ±¾¼°½øĞĞ²Ù×÷
-		entityTextPane.setEditable(false);//¸ÃÎÄ±¾ÊÇ²»ÄÜÓÉÓÃ»§ÔÚ¿òÄÚ±à¼­µÄ
+		final JTextPane entityTextPane = new JTextPane();//æ–°å»ºä¸€ä¸ªæ–‡æœ¬ç¼–è¾‘æ¡†ï¼Œç”¨æ¥æ˜¾ç¤ºæ–‡æœ¬åŠè¿›è¡Œæ“ä½œ
+		entityTextPane.setEditable(false);//è¯¥æ–‡æœ¬æ˜¯ä¸èƒ½ç”±ç”¨æˆ·åœ¨æ¡†å†…ç¼–è¾‘çš„
 	    
 		final JTable table = createEntityTable(entityTextPane,true);	  
 		addTextPaneListener(entityTextPane,table);
@@ -758,7 +758,7 @@ public class EmrRelationAnnotator
 					int pos = entityTextPane.viewToModel(e.getPoint());
 					int rows = table.getRowCount();
 					for(int i = 0;i < rows;i ++){
-						String entityvalue = (String)table.getValueAt(i, table.getColumnModel().getColumnIndex("ÊµÌå"));
+						String entityvalue = (String)table.getValueAt(i, table.getColumnModel().getColumnIndex("å®ä½“"));
 						Entity ent = Entity.createByAnnotationStr(entityvalue);
 						if(ent.getStartPos() <= pos && ent.getEndPos() >= pos){
 							existed = true;
@@ -783,16 +783,16 @@ public class EmrRelationAnnotator
 	
 	static void createRelPopMenu(final JTable table){
 		JPopupMenu menu = new JPopupMenu();
-		final JButton btn1 = new JButton("¼ÓÈëÊµÌå£¨×é£©1");
-		final JButton btn2 = new JButton("¼ÓÈëÊµÌå£¨×é£©2");
+		final JButton btn1 = new JButton("åŠ å…¥å®ä½“ï¼ˆç»„ï¼‰1");
+		final JButton btn2 = new JButton("åŠ å…¥å®ä½“ï¼ˆç»„ï¼‰2");
 		menu.add(btn1);
 		menu.add(btn2);
 		
 		ActionListener al = new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				int i = table.getSelectedRow();
-				String entityvalue = (String)table.getValueAt(i, table.getColumnModel().getColumnIndex("ÊµÌå"));
-				String entityType = ((TypeColor)table.getValueAt(i, table.getColumnModel().getColumnIndex("ÀàĞÍ"))).getTypeId();
+				String entityvalue = (String)table.getValueAt(i, table.getColumnModel().getColumnIndex("å®ä½“"));
+				String entityType = ((TypeColor)table.getValueAt(i, table.getColumnModel().getColumnIndex("ç±»å‹"))).getTypeId();
 				Entity ent = Entity.createByAnnotationStr(entityvalue);
 				ent.setEntityType(entityType);
 				int addResult = 2;
@@ -807,9 +807,9 @@ public class EmrRelationAnnotator
 				}
 				
 				if(addResult == 2){
-					JOptionPane.showMessageDialog(null,"ÊµÌåÀàĞÍ²»Ò»ÖÂ", "´íÎó",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null,"å®ä½“ç±»å‹ä¸ä¸€è‡´", "é”™è¯¯",JOptionPane.INFORMATION_MESSAGE);
 				}else if(addResult == 1){
-					JOptionPane.showMessageDialog(null,"¸ÃÊµÌåÒÑ¼ÓÈë", "¾¯¸æ",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null,"è¯¥å®ä½“å·²åŠ å…¥", "è­¦å‘Š",JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		};
@@ -822,11 +822,11 @@ public class EmrRelationAnnotator
 	
 	private static int addEntToList( ArrayList<Entity> entList, ArrayList<Entity> cannotExist,Entity ent,JTextField tf){
 		int canAdd = 2;
-		if(cannotExist.contains(ent)){//ÅĞ¶ÏÊÇ·ñÓĞÏàÍ¬µÄ¼ÓÈëÁË
+		if(cannotExist.contains(ent)){//åˆ¤æ–­æ˜¯å¦æœ‰ç›¸åŒçš„åŠ å…¥äº†
 			canAdd = 1;
 			return canAdd;
 		}
-		if(entList.contains(ent)){//ÅĞ¶ÏÊÇ·ñÓĞÏàÍ¬µÄ¼ÓÈëÁË
+		if(entList.contains(ent)){//åˆ¤æ–­æ˜¯å¦æœ‰ç›¸åŒçš„åŠ å…¥äº†
 			canAdd = 1;
 			return canAdd;
 		}
@@ -846,7 +846,7 @@ public class EmrRelationAnnotator
 		}
 		if(canAdd == 0){
 			entList.add(ent);
-			tf.setText(tf.getText()+ent.getEntity() + "£» ");
+			tf.setText(tf.getText()+ent.getEntity() + "ï¼› ");
 		}
 		
 		return canAdd;
@@ -860,7 +860,7 @@ public class EmrRelationAnnotator
 					int pos = entityTextPane.viewToModel(e.getPoint());
 					int rows = table.getRowCount();
 					for(int i = 0;i < rows;i ++){
-						String entityvalue = (String)table.getValueAt(i, table.getColumnModel().getColumnIndex("ÊµÌå"));
+						String entityvalue = (String)table.getValueAt(i, table.getColumnModel().getColumnIndex("å®ä½“"));
 						Entity ent = Entity.createByAnnotationStr(entityvalue);
 						if(ent.getStartPos() <= pos && ent.getEndPos() >= pos){
 							existed = true;
@@ -905,26 +905,26 @@ public class EmrRelationAnnotator
 	
 	private static JTable createRelationTable(final JTextPane textPane ){
 		
-		Object columnNames[] = {"ÊµÌå(×é)1", "ÊµÌå(×é)2","¹ØÏµÀàĞÍ","²»È·¶¨"};//±í¸ñµÄ4ÁĞÒâÒå
-		final JTable table = new JTable(null, columnNames);//½¨Á¢±í¸ñ
+		Object columnNames[] = {"å®ä½“(ç»„)1", "å®ä½“(ç»„)2","å…³ç³»ç±»å‹","ä¸ç¡®å®š"};//è¡¨æ ¼çš„4åˆ—æ„ä¹‰
+		final JTable table = new JTable(null, columnNames);//å»ºç«‹è¡¨æ ¼
 		DefaultTableModel model = new DefaultTableModel(){
 			public boolean isCellEditable(int row, int column)
 			{
-				if(getColumnName(column).equals("¹ØÏµÀàĞÍ") ){
-					if(table.getValueAt(row, table.getColumnModel().getColumnIndex("ÊµÌå(×é)2")).equals("")){
+				if(getColumnName(column).equals("å…³ç³»ç±»å‹") ){
+					if(table.getValueAt(row, table.getColumnModel().getColumnIndex("å®ä½“(ç»„)2")).equals("")){
 						return false;
 					}
 					return true;
 				}
-				if(getColumnName(column).equals("²»È·¶¨")){
+				if(getColumnName(column).equals("ä¸ç¡®å®š")){
 					return true;
 				}
 
-				return false;//±í¸ñ²»ÔÊĞí±»±à¼­
+				return false;//è¡¨æ ¼ä¸å…è®¸è¢«ç¼–è¾‘
 			}
 			public void setValueAt(Object aValue, int row, int column) {
 				super.setValueAt(aValue, row, column);
-				if(column == table.getColumnModel().getColumnIndex("¹ØÏµÀàĞÍ")){
+				if(column == table.getColumnModel().getColumnIndex("å…³ç³»ç±»å‹")){
 					TypeColor tc = (TypeColor)aValue;
 					if(tc == null){
 						return;
@@ -937,7 +937,7 @@ public class EmrRelationAnnotator
 				}else{
 					NewRelation nr = GlobalComponent.relationList.get(row);
 					String condition = nr.getEnts1Type() + nr.getEnts2Type();
-					DefaultCellEditor editor = (DefaultCellEditor)table.getCellEditor(row, table.getColumnModel().getColumnIndex("¹ØÏµÀàĞÍ"));
+					DefaultCellEditor editor = (DefaultCellEditor)table.getCellEditor(row, table.getColumnModel().getColumnIndex("å…³ç³»ç±»å‹"));
 					RelationTypeComboxModel model = (RelationTypeComboxModel)((JComboBox)editor.getComponent()).getModel();
 					model.setCondition(condition);
 				}
@@ -948,27 +948,27 @@ public class EmrRelationAnnotator
 		table.setSurrendersFocusOnKeystroke(true);
 		model.setColumnIdentifiers(columnNames);
 		table.setModel(model);
-		table.getColumn("¹ØÏµÀàĞÍ").setCellRenderer(new TypeCellRender(false));
+		table.getColumn("å…³ç³»ç±»å‹").setCellRenderer(new TypeCellRender(false));
 		
 		table.setRowHeight(25);
 		
 		RelationTypeComboxModel rtcm = new RelationTypeComboxModel();
-	    JComboBox combo2 = new JComboBox(rtcm);//½¨Á¢¹ØÏµÀàĞÍÏÂÀ­²Ëµ¥
+	    JComboBox combo2 = new JComboBox(rtcm);//å»ºç«‹å…³ç³»ç±»å‹ä¸‹æ‹‰èœå•
 	    combo2.setRenderer(new ComboxRender(false));
 	    combo2.setEditable(false);
 	    RelationTypeListener atml = new RelationTypeListener(table,combo2);
 	    combo2.getComponent(0).addMouseListener(atml);
 	    combo2.addFocusListener(new RelationTypeItemListener(table,combo2));
 	    RelationTypeCellEditor reltypeeditor = new RelationTypeCellEditor(combo2);
-	    table.getColumn("¹ØÏµÀàĞÍ").setCellEditor(reltypeeditor);//½«µÚ3ÁĞÉèÎª¸½ÀàÏÂÀ­Ñ¡Ïî
+	    table.getColumn("å…³ç³»ç±»å‹").setCellEditor(reltypeeditor);//å°†ç¬¬3åˆ—è®¾ä¸ºé™„ç±»ä¸‹æ‹‰é€‰é¡¹
 	    
 	    addRelationTableMouseListener(textPane,table);
 		
-	    table.getColumn("ÊµÌå(×é)1").setCellRenderer(new RelationEntityRenderer());
-	    table.getColumn("ÊµÌå(×é)2").setCellRenderer(new RelationEntityRenderer());
+	    table.getColumn("å®ä½“(ç»„)1").setCellRenderer(new RelationEntityRenderer());
+	    table.getColumn("å®ä½“(ç»„)2").setCellRenderer(new RelationEntityRenderer());
 	    
-	    table.getColumn("²»È·¶¨").setCellEditor(new DefaultCellEditor(new JCheckBox()));
-	    table.getColumn("²»È·¶¨").setCellRenderer(new QuestionalRenderer());
+	    table.getColumn("ä¸ç¡®å®š").setCellEditor(new DefaultCellEditor(new JCheckBox()));
+	    table.getColumn("ä¸ç¡®å®š").setCellRenderer(new QuestionalRenderer());
 
 		
 		return table;
@@ -995,8 +995,8 @@ public class EmrRelationAnnotator
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
 				int row = table.getSelectedRow();
-				//ÖÃ±³¾°É«
-				TypeColor tc = (TypeColor)table.getValueAt(row, table.getColumnModel().getColumnIndex("¹ØÏµÀàĞÍ"));
+				//ç½®èƒŒæ™¯è‰²
+				TypeColor tc = (TypeColor)table.getValueAt(row, table.getColumnModel().getColumnIndex("å…³ç³»ç±»å‹"));
 				Entity[] allents = GlobalComponent.relationList.get(row).toAllEntity();
 				
 				if(tc != null){
@@ -1015,7 +1015,7 @@ public class EmrRelationAnnotator
 			public void actionPerformed(ActionEvent e) {
 				if(GlobalComponent.onlyentgroup.isSelected()){
 					if(GlobalComponent.entList1.size() == 0){
-						JOptionPane.showMessageDialog(null, "ÊµÌå(×é)1²»ÄÜÎª¿Õ", "ÌáÊ¾",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "å®ä½“(ç»„)1ä¸èƒ½ä¸ºç©º", "æç¤º",JOptionPane.INFORMATION_MESSAGE);
 					}else{
 						NewRelation nr = new NewRelation();
 						nr.addEnts1(GlobalComponent.entList1);
@@ -1026,7 +1026,7 @@ public class EmrRelationAnnotator
 					}
 				}else{
 					if(GlobalComponent.entList1.size() == 0 || GlobalComponent.entList2.size() == 0){
-						JOptionPane.showMessageDialog(null, "ÊµÌå(×é)1ºÍÊµÌå(×é)2¶¼²»ÄÜÎª¿Õ", "ÌáÊ¾",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "å®ä½“(ç»„)1å’Œå®ä½“(ç»„)2éƒ½ä¸èƒ½ä¸ºç©º", "æç¤º",JOptionPane.INFORMATION_MESSAGE);
 					}else{
 						NewRelation nr = new NewRelation();
 						nr.addEnts1(GlobalComponent.entList1);
@@ -1037,9 +1037,9 @@ public class EmrRelationAnnotator
 							((DefaultTableModel)relationTable.getModel()).addRow(rowData);
 							ressetCurrentSelecttion();
 							
-							//ĞŞ¸ÄcomboxÄ£ĞÍ
+							//ä¿®æ”¹comboxæ¨¡å‹
 							String condition = nr.getEnts1Type() + nr.getEnts2Type();
-							DefaultCellEditor editor = (DefaultCellEditor)relationTable.getCellEditor(relationTable.getSelectedRow(), relationTable.getColumnModel().getColumnIndex("¹ØÏµÀàĞÍ"));
+							DefaultCellEditor editor = (DefaultCellEditor)relationTable.getCellEditor(relationTable.getSelectedRow(), relationTable.getColumnModel().getColumnIndex("å…³ç³»ç±»å‹"));
 							JComboBox combox = (JComboBox)editor.getComponent();
 							RelationTypeComboxModel model = (RelationTypeComboxModel)combox.getModel();
 							model.setCondition(condition);
@@ -1047,7 +1047,7 @@ public class EmrRelationAnnotator
 							
 							
 						}else{
-							JOptionPane.showMessageDialog(null, "ÊµÌå(×é)1ºÍÊµÌå(×é)2²»´æÔÚ¹ØÏµ", "ÌáÊ¾",JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "å®ä½“(ç»„)1å’Œå®ä½“(ç»„)2ä¸å­˜åœ¨å…³ç³»", "æç¤º",JOptionPane.INFORMATION_MESSAGE);
 						}
 					}
 				}
@@ -1073,7 +1073,7 @@ public class EmrRelationAnnotator
 		 buttonInRel.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GlobalComponent.relationList.clear();
-		    		JFileChooser j=new JFileChooser(GlobalCache.currentPath);//ÎÄ¼şÑ¡ÔñÆ÷
+		    		JFileChooser j=new JFileChooser(GlobalCache.currentPath);//æ–‡ä»¶é€‰æ‹©å™¨
 		    		j.setFileFilter(new EmrFileFiller(".rel,.qst"));
 		    	    if(j.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 		    	    	 try{
@@ -1173,12 +1173,12 @@ public class EmrRelationAnnotator
 							e1.printStackTrace();
 						}
 			    		
-			    		JOptionPane.showMessageDialog(null, "±£´æ³É¹¦  Â·¾¶£º"+path, "ÌáÊ¾",
+			    		JOptionPane.showMessageDialog(null, "ä¿å­˜æˆåŠŸ  è·¯å¾„ï¼š"+path, "æç¤º",
 		    		            JOptionPane.INFORMATION_MESSAGE);
 		    		}
 		    		else
 		    		{
-		    			JOptionPane.showMessageDialog(null, "ÒÑÈ¡Ïû  Î´±£´æ", "ÌáÊ¾",
+		    			JOptionPane.showMessageDialog(null, "å·²å–æ¶ˆ  æœªä¿å­˜", "æç¤º",
 		    		            JOptionPane.INFORMATION_MESSAGE);
 		    		}
 		    	}
@@ -1193,10 +1193,10 @@ public class EmrRelationAnnotator
 	    JTextField inputFile = new JTextField(40);
 		inputFile.setEditable(false);
 
-	    JButton buttonOpen = new JButton("´ò¿ªÎÄ¼ş"); 
-	    JButton buttonInNE = new JButton("µ¼ÈëÊµÌå");
-	    JButton buttonInRel = new JButton("µ¼Èë¹ØÏµ");
-	    JButton buttonSave = new JButton("µ¼³ö½á¹û");
+	    JButton buttonOpen = new JButton("æ‰“å¼€æ–‡ä»¶"); 
+	    JButton buttonInNE = new JButton("å¯¼å…¥å®ä½“");
+	    JButton buttonInRel = new JButton("å¯¼å…¥å…³ç³»");
+	    JButton buttonSave = new JButton("å¯¼å‡ºç»“æœ");
 	    btnpanel1.add(buttonOpen);
 	    btnpanel1.add(inputFile);
 	    btnpanel1.add(buttonInNE);
@@ -1231,14 +1231,14 @@ public class EmrRelationAnnotator
 	static  JPanel createEntRelBtnPanel(final JTextPane entityTextPane,final JTable entityTable,final JTable relationTable){
 		JPanel panel1 = new JPanel();
 		panel1.setLayout(new BorderLayout());
-		JLabel entityBtn1 = new JLabel("  ÊµÌå(×é)1  ");
+		JLabel entityBtn1 = new JLabel("  å®ä½“(ç»„)1  ");
 		JTextField entityTxt1 = new JTextField();
 		entityTxt1.setEditable(false);
 		panel1.add(entityBtn1,BorderLayout.WEST);
 		panel1.add(entityTxt1,BorderLayout.CENTER);		
 		JPanel panel2 = new JPanel();
 		panel2.setLayout(new BorderLayout());
-		JLabel entityBtn2 = new JLabel("  ÊµÌå(×é)2  ");
+		JLabel entityBtn2 = new JLabel("  å®ä½“(ç»„)2  ");
 		JTextField entityTxt2 = new JTextField();
 		entityTxt2.setEditable(false);
 		panel2.add(entityBtn2,BorderLayout.WEST);
@@ -1249,14 +1249,14 @@ public class EmrRelationAnnotator
 		
 		
 		
-		JButton addRelationBtn = new JButton(" Ìí¼ÓÊµÌå¹ØÏµ");
-	    JButton buttonNORel = new JButton(" É¾³ıÊµÌå¹ØÏµ");
+		JButton addRelationBtn = new JButton(" æ·»åŠ å®ä½“å…³ç³»");
+	    JButton buttonNORel = new JButton(" åˆ é™¤å®ä½“å…³ç³»");
 	    JPanel paneladddel = new JPanel();
 	    paneladddel.setLayout(new BorderLayout());
 	    paneladddel.add(addRelationBtn,BorderLayout.WEST);
 	    paneladddel.add(buttonNORel,BorderLayout.EAST);
-	    JButton buttonClear = new JButton("Çå¿ÕËùÑ¡ÊµÌå(×é)");
-	    JCheckBox onlyentgroup = new JCheckBox("Ö»±ê×¢ÊµÌå×é");
+	    JButton buttonClear = new JButton("æ¸…ç©ºæ‰€é€‰å®ä½“(ç»„)");
+	    JCheckBox onlyentgroup = new JCheckBox("åªæ ‡æ³¨å®ä½“ç»„");
 	    JPanel p = new JPanel();
 	    p.setLayout(new BorderLayout());
 	    p.add(onlyentgroup,BorderLayout.WEST);
@@ -1287,10 +1287,10 @@ public class EmrRelationAnnotator
 	
 	
 	
-	static void addRelationAnnotaionTab(JTabbedPane tabbedPane, String text)//¹ØÏµ±ê×¢
+	static void addRelationAnnotaionTab(JTabbedPane tabbedPane, String text)//å…³ç³»æ ‡æ³¨
 	{
 		JPanel relationPanel = new JPanel();
-		relationPanel.setLayout(new BorderLayout());//ÓÃBorderLayout¶Ô°æÃæ½øĞĞ²¼¾Ö
+		relationPanel.setLayout(new BorderLayout());//ç”¨BorderLayoutå¯¹ç‰ˆé¢è¿›è¡Œå¸ƒå±€
 		
 		final JTextPane entityTextPane = new JTextPane();
 		entityTextPane.setEditable(false);
@@ -1335,16 +1335,16 @@ public class EmrRelationAnnotator
 	
 	
 
-	public static void main(String args[]) //Ö÷º¯Êı
+	public static void main(String args[]) //ä¸»å‡½æ•°
 	{
 		JFrame.setDefaultLookAndFeelDecorated(true);
-		JFrame f = new JFrame("WIÊµÑéÊÒµç×Ó²¡ÀúÊµÌåºÍÊµÌå¹ØÏµ±ê×¢¹¤¾ß");
+		JFrame f = new JFrame("WIå®éªŒå®¤ç”µå­ç—…å†å®ä½“å’Œå®ä½“å…³ç³»æ ‡æ³¨å·¥å…·");
 //		f.setResizable(false);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container content = f.getContentPane();
 		JTabbedPane tabbedPane = new JTabbedPane();
-		addEntityAnnotationTab(tabbedPane, "ÊµÌå±ê×¢");
-		addRelationAnnotaionTab(tabbedPane, "ÊµÌå¹ØÏµ±ê×¢");
+		addEntityAnnotationTab(tabbedPane, "å®ä½“æ ‡æ³¨");
+		addRelationAnnotaionTab(tabbedPane, "å®ä½“å…³ç³»æ ‡æ³¨");
 		tabbedPane.setSelectedIndex(1);
 		content.add(tabbedPane, BorderLayout.CENTER);
 		f.setSize(1024, 768);

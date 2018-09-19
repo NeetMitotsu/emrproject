@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public class EmrFormater {
 	
-	//≥ˆ‘∫  …Ω‘∫
-	//≥ˆœ÷  …Ωœ÷
+	//Âá∫Èô¢  Â±±Èô¢
+	//Âá∫Áé∞  Â±±Áé∞
 	//0 o
 
 	/**
@@ -23,8 +23,8 @@ public class EmrFormater {
 //		new EmrFormater().extractEmr("yangjinfeng", "export");
 //		new EmrFormater().extractEmr("F:\\dianzibingli\\EMR\\review\\renzhenyu_finished", "C:\\Users\\yangjinfeng\\Desktop\\export");
 //		new EmrFormater().extractEmr("C:\\Users\\yangjinfeng\\Desktop\\liuzhiguang_finished_1", "C:\\Users\\yangjinfeng\\Desktop\\export");
-//		new EmrFormater().exportDischargeToXml(new File("F:\\dianzibingli\\EMR\\review\\zhaofangfang_finished\\H913255\\≥ˆ‘∫–°Ω·11.txt"), new File("chuyuanxiaojie.xml"),"GB2312");
-//		new EmrFormater().exportProgressToXml(new File("yangjinfeng/0714648/≤°≥Ãº«¬º.txt"), new File("bingchengjilu.xml"));
+//		new EmrFormater().exportDischargeToXml(new File("F:\\dianzibingli\\EMR\\review\\zhaofangfang_finished\\H913255\\Âá∫Èô¢Â∞èÁªì11.txt"), new File("chuyuanxiaojie.xml"),"GB2312");
+//		new EmrFormater().exportProgressToXml(new File("yangjinfeng/0714648/ÁóÖÁ®ãËÆ∞ÂΩï.txt"), new File("bingchengjilu.xml"));
 		new EmrFormater().extractAllEmr("F:\\dianzibingli\\EMR\\review", "F:\\dianzibingli\\EMR\\xmlemr");
 	}
 	
@@ -91,7 +91,7 @@ public class EmrFormater {
 			}
 			lineNumber ++;
 			line = CharConverter.instance.convert(line);
-			if(lineNumber == 5){//µ⁄Àƒ–– «ªº’ﬂ–≈œ¢
+			if(lineNumber == 5){//Á¨¨ÂõõË°åÊòØÊÇ£ËÄÖ‰ø°ÊÅØ
 				new Block(EmrNameConst.zhusu,line,false).output(pw);
 			}else if(lineNumber > 5){
 				
@@ -110,7 +110,7 @@ public class EmrFormater {
 						currentBlock = null;
 					}
 //					line =line.trim();
-					if(line.startsWith(EmrNameConst.binglitedian)){//√≈’Ô ’÷Œ’Ô∂œ
+					if(line.startsWith(EmrNameConst.binglitedian)){//Èó®ËØäÊî∂Ê≤ªËØäÊñ≠
 						currentBlock = new Block(EmrNameConst.binglitedian,line,true);
 						sectionNames.add(EmrNameConst.binglitedian);
 						
@@ -145,7 +145,7 @@ public class EmrFormater {
 		if(absence.length > 0 ){
 			PrintWriter errpw = new PrintWriter(createErrFilename(xmlFile,userdir));
 			for(String name : absence){
-				errpw.println("»± ß £∫"+name);
+				errpw.println("Áº∫Â§± Ôºö"+name);
 			}
 			errpw.close();
 		}
@@ -153,7 +153,7 @@ public class EmrFormater {
 	}
 	
 	private boolean ignore(String str){
-		if(str.contains("≤°¿˙«©√˚") || str.contains("º«¬º ±º‰")|| str.contains("◊°‘∫“Ω…˙")){
+		if(str.contains("ÁóÖÂéÜÁ≠æÂêç") || str.contains("ËÆ∞ÂΩïÊó∂Èó¥")|| str.contains("‰ΩèÈô¢ÂåªÁîü")){
 			return true;
 		}
 		return false;
@@ -183,9 +183,9 @@ public class EmrFormater {
 			}
 			lineNumber ++;
 			line = CharConverter.instance.convert(line);
-			if(lineNumber == 4){//µ⁄Àƒ–– «ªº’ﬂ–≈œ¢
+			if(lineNumber == 4){//Á¨¨ÂõõË°åÊòØÊÇ£ËÄÖ‰ø°ÊÅØ
 				new Block(EmrNameConst.huanzhexinxi,line,false).output(pw);
-			}else if(lineNumber == 5){//µ⁄ŒÂ–– «ªº’ﬂ◊°‘∫∆÷π»’∆⁄
+			}else if(lineNumber == 5){//Á¨¨‰∫îË°åÊòØÊÇ£ËÄÖ‰ΩèÈô¢Ëµ∑Ê≠¢Êó•Êúü
 				new Block(EmrNameConst.zhuyuanqizhiri,line,false).output(pw);
 			}else if(lineNumber > 5){
 				
@@ -203,7 +203,7 @@ public class EmrFormater {
 						currentBlock.output(pw);
 						currentBlock = null;
 					}
-					if(line.startsWith(EmrNameConst.menzhenshouzhizhenduan)){//√≈’Ô ’÷Œ’Ô∂œ
+					if(line.startsWith(EmrNameConst.menzhenshouzhizhenduan)){//Èó®ËØäÊî∂Ê≤ªËØäÊñ≠
 						currentBlock = new Block(EmrNameConst.menzhenshouzhizhenduan,line,true);
 						sectionNames.add(EmrNameConst.menzhenshouzhizhenduan);
 						
@@ -258,7 +258,7 @@ public class EmrFormater {
 		if(absence.length > 0 ){
 			PrintWriter errpw = new PrintWriter(createErrFilename(xmlFile,userdir));
 			for(String name : absence){
-				errpw.println("»± ß £∫"+name);
+				errpw.println("Áº∫Â§± Ôºö"+name);
 			}
 			errpw.close();
 		}
@@ -306,7 +306,7 @@ public class EmrFormater {
 			for(String cont : content){
 				String contentStr = cont;
 				if(tagName.equals(EmrNameConst.huanzhexinxi)){
-					contentStr = cont.replaceAll("–’√˚[  ]?:[  ]?[\u4E00-\u9FA5]*[  ]?", "");
+					contentStr = cont.replaceAll("ÂßìÂêç[  ]?:[  ]?[\u4E00-\u9FA5]*[  ]?", "");
 				}else if(tagName.equals(EmrNameConst.zhusu)){
 					contentStr = cont.replaceAll("^[\u4E00-\u9FA5]*[  ]?,[  ]?", "");
 				}

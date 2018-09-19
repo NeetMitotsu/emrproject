@@ -13,6 +13,7 @@ public class TypeColorMap {
 	private static LinkedHashMap<String, TypeColor> assertMap = new LinkedHashMap<String, TypeColor>();
 	private static LinkedHashMap<String, TypeColor> relationMap = new LinkedHashMap<String, TypeColor>();
 	private static LinkedHashMap<String, TypeColor> tassertMap = new LinkedHashMap<String, TypeColor>();
+	private static LinkedHashMap<String, TypeColor> shengliBingliMap = new LinkedHashMap<>();
 	
 	static{
 		
@@ -21,6 +22,7 @@ public class TypeColorMap {
 			fillMapFromCfg(assertMap,"config/asserttype.properties");
 			fillMapFromCfg(relationMap,"config/relationtype.properties");
 			fillMapFromCfg(tassertMap,"config/tasserttype.properties");
+			fillMapFromCfg(shengliBingliMap, "config/shengliBingli.properties");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,12 +64,17 @@ public class TypeColorMap {
 			return relationMap.get(typeId);
 		}else if(tassertMap.containsKey(typeId)){
 			return tassertMap.get(typeId);
+		}else if(shengliBingliMap.containsKey(typeId)){
+			return shengliBingliMap.get(typeId);
 		}
 		return null;
 	} 
 	
 	public static TypeColor[] getEntityTypeArray(){
 		return entityMap.values().toArray(new TypeColor[0]);
+	}
+	public static TypeColor[] getShengliBingliTypeArray(){
+		return shengliBingliMap.values().toArray(new TypeColor[0]);
 	}
 	
 	public static TypeColor[] getAssertTypeArray(){

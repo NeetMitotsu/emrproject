@@ -6,7 +6,7 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-public class ComboxRender extends DefaultListCellRenderer implements ListCellRenderer {
+public class ComboxRender extends DefaultListCellRenderer implements ListCellRenderer<Object> {
 
 	/**
 	 * 
