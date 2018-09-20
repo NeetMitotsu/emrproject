@@ -14,7 +14,7 @@ public class TypeColorMap {
 	private static LinkedHashMap<String, TypeColor> relationMap = new LinkedHashMap<String, TypeColor>();
 	private static LinkedHashMap<String, TypeColor> tassertMap = new LinkedHashMap<String, TypeColor>();
 	private static LinkedHashMap<String, TypeColor> shengliBingliMap = new LinkedHashMap<>();
-	
+	private static LinkedHashMap<String, TypeColor> fenLeiMap = new LinkedHashMap<>();
 	static{
 		
 		try {
@@ -23,6 +23,7 @@ public class TypeColorMap {
 			fillMapFromCfg(relationMap,"config/relationtype.properties");
 			fillMapFromCfg(tassertMap,"config/tasserttype.properties");
 			fillMapFromCfg(shengliBingliMap, "config/shengliBingli.properties");
+			fillMapFromCfg(fenLeiMap, "config/fenlei.properties");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -92,4 +93,7 @@ public class TypeColorMap {
 		System.out.println(TypeColorMap.getType("DIS"));
 	}
 
+	public static TypeColor[] getFenLeiTypeArray() {
+		return fenLeiMap.values().toArray(new TypeColor[0]);
+	}
 }

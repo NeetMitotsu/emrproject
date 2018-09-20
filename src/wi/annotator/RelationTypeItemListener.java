@@ -21,7 +21,7 @@ public class RelationTypeItemListener implements FocusListener {
 			return;
 		}
 		String generalType = TypeColorMap2.getGeneralType(tc.getTypeId());
-		RelationTypeCellEditor editor = (RelationTypeCellEditor)table.getColumn("关系类型").getCellEditor();
+		RelationTypeCellEditor editor = (RelationTypeCellEditor)table.getColumn("鍏崇郴绫诲瀷").getCellEditor();
 		int row = editor.getRow();
 		int col = editor.getColumn();
 		NewRelation nr = GlobalComponent.relationList.get(row);
