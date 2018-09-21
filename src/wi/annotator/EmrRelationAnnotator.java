@@ -535,7 +535,7 @@ public class EmrRelationAnnotator {
      * @return
      */
     private static JTable createEntityTable(final JTextPane textPane, final boolean isForEntity) {
-        Object columnNames[] = {"行号", "实体", "类型", "修饰", "不确定", "生理病理"};//表格的4列意义
+        Object columnNames[] = {"行号", "实体", "类型", "修饰", "不确定", "生理病理", "分类"};//表格的4列意义
 //		final Object rowData[][] = new Object[maxNum][2];//建立表格中的元素数组
         final JTable table = new JTable(null, columnNames);//建立表格
         DefaultTableModel model = new DefaultTableModel() {
@@ -565,9 +565,11 @@ public class EmrRelationAnnotator {
                 if (getColumnName(column).equals("生理病理")) {
                     return true;
                 }
+                if (getColumnName(column).equals("分类")){
+                    return true;
+                }
                 return false;//表格不允许被编辑
             }
-
             public void setValueAt(Object aValue, int row, int column) {
                 super.setValueAt(aValue, row, column);
                 if (column == table.getColumnModel().getColumnIndex("类型")) {
@@ -587,6 +589,34 @@ public class EmrRelationAnnotator {
                         } else {
                             model.setCondition("problem");
                         }
+                    }
+                }
+                if (column == table.getColumnModel().getColumnIndex("分类")){
+//                    TypeColor tc = (TypeColor) aValue;
+                    TypeColor tc = (TypeColor) table.getValueAt(row, table.getColumnModel().getColumnIndex("分类"));
+                    if (tc.getFlag() == 0){
+                        table.setValueAt(null, row, table.getColumnModel().getColumnIndex("类型"));
+                    }
+                    if(tc.getFlag() == 1){
+                        DefaultCellEditor editor = (DefaultCellEditor) table.getCellEditor(row,table.getColumnModel().getColumnIndex("类型"));
+                        TypeComboxModel model = (TypeComboxModel) ((JComboBox) editor.getComponent()).getModel();
+                        final String typeId = tc.getTypeId();
+                        if ("zhenduan".equals(typeId)){
+                            model.setCondition("zhenduan");
+                        }else if ("zhengzhuang".equals(typeId)){
+                            model.setCondition("zhengzhuang");
+                        }else if ("zhengzhuangxiangguan".equals(typeId)){
+                            model.setCondition("zhengzhuangxiangguan");
+                        }else if ("jiancha".equals(typeId)){
+                            model.setCondition("jiancha");
+                        }else if ("zhiliao".equals(typeId)){
+                            model.setCondition("zhiliao");
+                        }else if ("shijian".equals(typeId)){
+                            model.setCondition("shijian");
+                        }else{
+                            model.setCondition("all");
+                        }
+
                     }
                 }
             }
@@ -612,18 +642,33 @@ public class EmrRelationAnnotator {
 //        DefaultCellEditor fenLeiEditor = new DefaultCellEditor(fenleiComboBox);
 //        table.getColumn("分类").setCellEditor(fenLeiEditor);
 //        table.getColumn("分类").setCellRenderer(new TypeCellRender(true));
-
-
-        final JComboBox combo = new JComboBox();//建立实体分类下拉菜单
-        for (TypeColor tc : TypeColorMap.getEntityTypeArray()) {
-            combo.addItem(tc);
+        /* 分类栏 */
+        final JComboBox fenleiComboBox = new JComboBox();
+        for(TypeColor tc: TypeColorMap.getFenLeiTypeArray()){
+            fenleiComboBox.addItem(tc);
         }
+        fenleiComboBox.setRenderer(new ComboxRender(true));
+        fenleiComboBox.setEditable(false);
+        DefaultCellEditor fenleiCellEditor = new DefaultCellEditor(fenleiComboBox);
+        table.getColumn("分类").setCellEditor(fenleiCellEditor);
+        table.getColumn("分类").setCellRenderer(new TypeCellRender(true));
+
+
+
+//        for (TypeColor tc : TypeColorMap.getEntityTypeArray()) {
+//            combo.addItem(tc);
+//        }
+        /* 类型下拉栏 */
+        TypeComboxModel typeComboxModel = new TypeComboxModel();
+        final JComboBox combo = new JComboBox(typeComboxModel);//建立实体分类下|拉菜单
         combo.setRenderer(new ComboxRender(true));
+//        combo.getComponent(0).addMouseListener(new TypeMouseListener(table, combo));
         combo.setEditable(false);
         DefaultCellEditor typeeditor = new DefaultCellEditor(combo);
         table.getColumn("类型").setCellEditor(typeeditor);//将第3列设为附类下拉选项
         table.getColumn("类型").setCellRenderer(new TypeCellRender(true));
 
+        /* 修饰下拉栏 */
         AssertTypeComboxModel atcm = new AssertTypeComboxModel();
         JComboBox combo2 = new JComboBox(atcm);//建立修饰分类下拉菜单
         AssertTypeMouseListener atml = new AssertTypeMouseListener(table, combo2);
@@ -649,6 +694,7 @@ public class EmrRelationAnnotator {
         DefaultCellEditor shengliBingliEditor = new DefaultCellEditor(shengliBingliComboBox);
         table.getColumn("生理病理").setCellEditor(shengliBingliEditor);
         table.getColumn("生理病理").setCellRenderer(new TypeCellRender(true));
+
         return table;
     }
 

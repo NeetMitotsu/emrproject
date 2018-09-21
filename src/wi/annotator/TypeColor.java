@@ -48,6 +48,10 @@ public class TypeColor {
 				Integer.parseInt(colorStr.substring(4, 6), 16));
 		return color;
 	}
-	
+
+	public static void main(String[] args) {
+		final Integer integer = Integer.valueOf("FFFFFF");
+		System.out.println(integer.toString());
+	}
 
 }

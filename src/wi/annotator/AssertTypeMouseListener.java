@@ -30,7 +30,7 @@ public class AssertTypeMouseListener extends MouseAdapter {
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		int row = table.getSelectedRow();
-		int entitytypecolumn = table.getColumnModel().getColumnIndex("ÀàÐÍ");
+		int entitytypecolumn = table.getColumnModel().getColumnIndex("ç±»åž‹");
 		TypeColor tc = (TypeColor)table.getValueAt(row, entitytypecolumn);
 		if(tc.getFlag() == 1){
 			AssertTypeComboxModel model = (AssertTypeComboxModel)combox.getModel();

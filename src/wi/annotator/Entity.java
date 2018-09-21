@@ -196,7 +196,7 @@ public class Entity implements Comparable<Entity> {
 
     //xxx【p1-p2】type
     public String toRelationSave() {
-        return toAnnotation() + "@" + getEntityType();
+        return toAnnotation() + getEntityType();
     }
 
     public static Entity createByRelSaveStr(String relSaveStr) {

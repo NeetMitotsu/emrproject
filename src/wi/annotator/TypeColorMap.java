@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Properties;
+import java.util.*;
 
 public class TypeColorMap {
 	private  static LinkedHashMap<String, TypeColor> entityMap = new LinkedHashMap<String, TypeColor>();
@@ -95,5 +93,95 @@ public class TypeColorMap {
 
 	public static TypeColor[] getFenLeiTypeArray() {
 		return fenLeiMap.values().toArray(new TypeColor[0]);
+	}
+
+	public static TypeColor[] getEntityTypeArrayZhengZhuang() {
+		List<TypeColor> list = new ArrayList<>();
+		Set<String> keySet = new HashSet<>();
+		keySet.add("complaintSymptom");
+		keySet.add("singleSymptom");
+		keySet.add("body");
+		keySet.add("main");
+		keySet.add("feel");
+		keySet.add("testresult");
+		for(Map.Entry<String, TypeColor> entry:entityMap.entrySet()){
+			if (keySet.contains(entry.getKey())){
+				list.add(entry.getValue());
+			}
+		}
+		return list.toArray(new TypeColor[0]);
+	}
+
+	public static TypeColor[] getEntityTypeArrayZhenDuan() {
+		List<TypeColor> list = new ArrayList<>();
+		Set<String> keySet = new HashSet<>();
+		keySet.add("disease");
+		keySet.add("diseasetype");
+		for(Map.Entry<String, TypeColor> entry:entityMap.entrySet()){
+			if (keySet.contains(entry.getKey())){
+				list.add(entry.getValue());
+			}
+		}
+		return list.toArray(new TypeColor[0]);
+	}
+
+	public static TypeColor[] getEntityTypeArrayZhengZhuangXiangGuan() {
+		List<TypeColor> list = new ArrayList<>();
+		Set<String> keySet = new HashSet<>();
+		keySet.add("symptomNature");
+		keySet.add("severity");
+		keySet.add("frequency");
+		keySet.add("incentive");
+		keySet.add("range");
+		for(Map.Entry<String, TypeColor> entry:entityMap.entrySet()){
+			if (keySet.contains(entry.getKey())){
+				list.add(entry.getValue());
+			}
+		}
+		return list.toArray(new TypeColor[0]);
+	}
+
+	public static TypeColor[] getEntityTypeArrayJianCha() {
+		List<TypeColor> list = new ArrayList<>();
+		Set<String> keySet = new HashSet<>();
+		keySet.add("checkProject");
+		keySet.add("checkResult");
+		keySet.add("auxiliaryCheckProject");
+		keySet.add("auxiliaytCheckResult");
+		keySet.add("check");
+		for(Map.Entry<String, TypeColor> entry:entityMap.entrySet()){
+			if (keySet.contains(entry.getKey())){
+				list.add(entry.getValue());
+			}
+		}
+		return list.toArray(new TypeColor[0]);
+	}
+
+	public static TypeColor[] getEntityTypeArrayZhiLiao() {
+		List<TypeColor> list = new ArrayList<>();
+		Set<String> keySet = new HashSet<>();
+		keySet.add("medicalTreatment");
+		keySet.add("surgicalTreatment");
+		keySet.add("physiotherapyTreatment");
+		for(Map.Entry<String, TypeColor> entry:entityMap.entrySet()){
+			if (keySet.contains(entry.getKey())){
+				list.add(entry.getValue());
+			}
+		}
+		return list.toArray(new TypeColor[0]);
+	}
+
+	public static TypeColor[] getEntityTypeArrayShiJian() {
+		List<TypeColor> list = new ArrayList<>();
+		Set<String> keySet = new HashSet<>();
+		keySet.add("startTime");
+		keySet.add("stayTime");
+		keySet.add("age");
+		for(Map.Entry<String, TypeColor> entry:entityMap.entrySet()){
+			if (keySet.contains(entry.getKey())){
+				list.add(entry.getValue());
+			}
+		}
+		return list.toArray(new TypeColor[0]);
 	}
 }
