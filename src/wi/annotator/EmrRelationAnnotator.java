@@ -11,13 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Vector;
@@ -49,7 +43,7 @@ import javax.swing.text.StyleConstants;
 public class EmrRelationAnnotator {
     public static int wordSize = 16;
     public static int chooseSize = 18;
-
+    public static String currentFilePath = null;
 
     /**
      * 实体标注栏 打开文件
@@ -84,7 +78,8 @@ public class EmrRelationAnnotator {
                         StyleConstants.setForeground(attr, Color.black);
                         StyleConstants.setFontSize(attr, wordSize);
                         ((DefaultStyledDocument) textPane.getDocument()).setCharacterAttributes(0, textPane.getText().length(), attr, false);
-
+                        currentFilePath = f.getAbsolutePath();
+                        RelationTypeItemListener.currentFilePath = currentFilePath;
                         inputFile.setText(f.getAbsolutePath());
                         if (entityTable != null) {
                             clearTable(entityTable);
@@ -1105,47 +1100,42 @@ public class EmrRelationAnnotator {
 
 
     private static void addAddrealtionBtnListener(JButton addRelationBtn, final JTable relationTable) {
-        addRelationBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (GlobalComponent.onlyentgroup.isSelected()) {
-                    if (GlobalComponent.entList1.size() == 0) {
-                        JOptionPane.showMessageDialog(null, "实体(组)1不能为空", "提示", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        NewRelation nr = new NewRelation();
-                        nr.addEnts1(GlobalComponent.entList1);
+        addRelationBtn.addActionListener(e -> {
+            if (GlobalComponent.onlyentgroup.isSelected()) {
+                if (GlobalComponent.entList1.size() == 0) {
+                    JOptionPane.showMessageDialog(null, "实体(组)1不能为空", "提示", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    NewRelation nr = new NewRelation();
+                    nr.addEnts1(GlobalComponent.entList1);
+                    GlobalComponent.relationList.add(nr);
+                    Object[] rowData = new Object[]{nr.ents1ToAnnotation(), "", null};
+                    ((DefaultTableModel) relationTable.getModel()).addRow(rowData);
+                    ressetCurrentSelecttion();
+                }
+            } else {
+                if (GlobalComponent.entList1.size() == 0 || GlobalComponent.entList2.size() == 0) {
+                    JOptionPane.showMessageDialog(null, "实体(组)1和实体(组)2都不能为空", "提示", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    NewRelation nr = new NewRelation();
+                    nr.addEnts1(GlobalComponent.entList1);
+                    nr.addEnts2(GlobalComponent.entList2);
+                    if (nr.existRelation()) {
                         GlobalComponent.relationList.add(nr);
-                        Object[] rowData = new Object[]{nr.ents1ToAnnotation(), "", null};
+                        Object[] rowData = new Object[]{nr.ents1ToAnnotation(), nr.ents2ToAnnotation(), null};
                         ((DefaultTableModel) relationTable.getModel()).addRow(rowData);
                         ressetCurrentSelecttion();
-                    }
-                } else {
-                    if (GlobalComponent.entList1.size() == 0 || GlobalComponent.entList2.size() == 0) {
-                        JOptionPane.showMessageDialog(null, "实体(组)1和实体(组)2都不能为空", "提示", JOptionPane.INFORMATION_MESSAGE);
+
+                        //修改combox模型
+                        String condition = nr.getEnts1Type() + nr.getEnts2Type();
+                        DefaultCellEditor editor = (DefaultCellEditor) relationTable.getCellEditor(relationTable.getSelectedRow(), relationTable.getColumnModel().getColumnIndex("关系类型"));
+                        JComboBox combox = (JComboBox) editor.getComponent();
+                        RelationTypeComboxModel model = (RelationTypeComboxModel) combox.getModel();
+                        model.setCondition(condition);
+                        combox.setModel(model);
                     } else {
-                        NewRelation nr = new NewRelation();
-                        nr.addEnts1(GlobalComponent.entList1);
-                        nr.addEnts2(GlobalComponent.entList2);
-                        if (nr.existRelation()) {
-                            GlobalComponent.relationList.add(nr);
-                            Object[] rowData = new Object[]{nr.ents1ToAnnotation(), nr.ents2ToAnnotation(), null};
-                            ((DefaultTableModel) relationTable.getModel()).addRow(rowData);
-                            ressetCurrentSelecttion();
-
-                            //修改combox模型
-                            String condition = nr.getEnts1Type() + nr.getEnts2Type();
-                            DefaultCellEditor editor = (DefaultCellEditor) relationTable.getCellEditor(relationTable.getSelectedRow(), relationTable.getColumnModel().getColumnIndex("关系类型"));
-                            JComboBox combox = (JComboBox) editor.getComponent();
-                            RelationTypeComboxModel model = (RelationTypeComboxModel) combox.getModel();
-                            model.setCondition(condition);
-                            combox.setModel(model);
-
-
-                        } else {
-                            JOptionPane.showMessageDialog(null, "实体(组)1和实体(组)2不存在关系", "提示", JOptionPane.INFORMATION_MESSAGE);
-                        }
+                        JOptionPane.showMessageDialog(null, "实体(组)1和实体(组)2不存在关系", "提示", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
-
             }
         });
     }
